@@ -1,0 +1,11 @@
+{
+  "scenario": "synthetic_customer_operations",
+  "request_count": 100,
+  "decisions": {
+    "automate": 50,
+    "manual": 20,
+    "require_approval": 30
+  },
+  "redacted_evidence_count": 100,
+  "disclaimer": "Synthetic demonstration; not customer performance data."
+}

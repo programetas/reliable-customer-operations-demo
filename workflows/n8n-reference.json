@@ -1,0 +1,80 @@
+{
+  "name": "Reliable customer operations reference",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual-trigger",
+      "name": "Synthetic request",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [200, 300]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {"id": "id", "name": "request_id", "value": "REQ-DEMO-001", "type": "string"},
+            {"id": "category", "name": "category", "value": "quota_change", "type": "string"},
+            {"id": "summary", "name": "summary", "value": "Synthetic quota request", "type": "string"}
+          ]
+        }
+      },
+      "id": "synthetic-payload",
+      "name": "Create synthetic payload",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [420, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const sensitive = new Set(['quota_change','payment_method_update','account_deletion','marketing_opt_out']);\nconst safe = new Set(['invoice_copy','service_status','usage_summary']);\nreturn items.map(({json}) => ({json: {...json, decision: sensitive.has(json.category) ? 'require_approval' : safe.has(json.category) ? 'automate' : 'manual', policy_version: 'demo-1'}}));"
+      },
+      "id": "policy-boundary",
+      "name": "Deterministic policy boundary",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [660, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {"caseSensitive": true, "leftValue": ""},
+          "conditions": [
+            {"id": "approval-check", "leftValue": "={{ $json.decision }}", "rightValue": "require_approval", "operator": {"type": "string", "operation": "equals"}}
+          ],
+          "combinator": "and"
+        }
+      },
+      "id": "approval-branch",
+      "name": "Approval required?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {"content": "Human approval queue placeholder", "height": 220, "width": 260},
+      "id": "approval-note",
+      "name": "Human approval",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [1110, 120]
+    },
+    {
+      "parameters": {"content": "Mock action and evidence placeholder", "height": 220, "width": 280},
+      "id": "action-note",
+      "name": "Action and evidence",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [1110, 410]
+    }
+  ],
+  "connections": {
+    "Synthetic request": {"main": [[{"node": "Create synthetic payload", "type": "main", "index": 0}]]},
+    "Create synthetic payload": {"main": [[{"node": "Deterministic policy boundary", "type": "main", "index": 0}]]},
+    "Deterministic policy boundary": {"main": [[{"node": "Approval required?", "type": "main", "index": 0}]]}
+  },
+  "settings": {"executionOrder": "v1"},
+  "meta": {"note": "Synthetic reference only. No credentials or external connectors are included."},
+  "active": false,
+  "versionId": "00000000-0000-4000-8000-000000000001"
+}

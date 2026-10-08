@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">Reliable customer operations automation pipeline</title>
+  <desc id="desc">A support request passes through redaction, deterministic policy, automation or human review, and an evidence log.</desc>
+  <rect width="1200" height="360" rx="24" fill="#0e2233"/>
+  <style>
+    .title { font: 700 30px Arial, sans-serif; fill: #ffffff; }
+    .label { font: 700 18px Arial, sans-serif; fill: #0e2233; }
+    .small { font: 400 14px Arial, sans-serif; fill: #526776; }
+    .arrow { stroke: #31c6d4; stroke-width: 5; fill: none; marker-end: url(#head); }
+  </style>
+  <defs><marker id="head" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#31c6d4"/></marker></defs>
+  <text x="52" y="60" class="title">Reliable automation keeps authority explicit</text>
+  <g transform="translate(45 120)"><rect width="180" height="115" rx="14" fill="#edf6fa"/><text x="90" y="48" text-anchor="middle" class="label">Request</text><text x="90" y="78" text-anchor="middle" class="small">Synthetic input</text></g>
+  <path d="M230 177 H290" class="arrow"/>
+  <g transform="translate(300 120)"><rect width="180" height="115" rx="14" fill="#edf6fa"/><text x="90" y="48" text-anchor="middle" class="label">Redact</text><text x="90" y="78" text-anchor="middle" class="small">Remove contact data</text></g>
+  <path d="M485 177 H545" class="arrow"/>
+  <g transform="translate(555 120)"><rect width="180" height="115" rx="14" fill="#d9f5f0"/><text x="90" y="48" text-anchor="middle" class="label">Policy boundary</text><text x="90" y="78" text-anchor="middle" class="small">Deterministic decision</text></g>
+  <path d="M740 177 H800" class="arrow"/>
+  <g transform="translate(810 92)"><rect width="170" height="78" rx="14" fill="#edf6fa"/><text x="85" y="34" text-anchor="middle" class="label">Mock action</text><text x="85" y="58" text-anchor="middle" class="small">Safe categories</text></g>
+  <g transform="translate(810 191)"><rect width="170" height="78" rx="14" fill="#fff1d6"/><text x="85" y="34" text-anchor="middle" class="label">Human review</text><text x="85" y="58" text-anchor="middle" class="small">Sensitive categories</text></g>
+  <path d="M985 131 H1040 V177" class="arrow"/><path d="M985 230 H1040 V187" class="arrow"/>
+  <g transform="translate(1045 120)"><rect width="120" height="115" rx="14" fill="#edf6fa"/><text x="60" y="48" text-anchor="middle" class="label">Evidence</text><text x="60" y="78" text-anchor="middle" class="small">Audit trail</text></g>
+  <text x="52" y="322" class="small">LLMs may interpret a request. The policy owns the decision and the action boundary.</text>
+</svg>

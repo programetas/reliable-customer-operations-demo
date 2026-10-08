@@ -1,0 +1,21 @@
+[
+  {
+    "request_id": "REQ-1001",
+    "category": "invoice_copy",
+    "summary": "Please send the May invoice to alex@example.test.",
+    "requester_email": "alex@example.test"
+  },
+  {
+    "request_id": "REQ-1002",
+    "category": "quota_change",
+    "summary": "Increase the monthly quota for the test workspace. Call +34 600 000 000 if needed.",
+    "requester_email": "sam@example.test"
+  },
+  {
+    "request_id": "REQ-1003",
+    "category": "custom_contract_question",
+    "summary": "Can you explain the special renewal clause in our fictional contract?",
+    "requester_email": "lee@example.test"
+  }
+]
+
